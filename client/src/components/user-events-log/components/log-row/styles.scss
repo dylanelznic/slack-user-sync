@@ -1,0 +1,61 @@
+.user-events-log-row-container {
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid #e7eaf0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #f8fafc;
+  }
+}
+
+.user-events-log-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 40px;
+}
+
+.user-events-log-cell {
+  &.user-id {
+    width: 23%;
+  }
+
+  &.real-name {
+    width: 23%;
+  }
+
+  &.display-name {
+    width: 23%;
+  }
+
+  &.timestamp {
+    width: 31%;
+  }
+}
+
+.extra-data-row {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 184px;
+  padding: 16px 48px 24px 48px;
+}
+
+.extra-data-key-pair {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  padding: 4px 0;
+}
+
+.extra-data-key {
+  font-weight: 600;
+}
+
+.extra-data-value {
+  margin-left: 8px;
+}

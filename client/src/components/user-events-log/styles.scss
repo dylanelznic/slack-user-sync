@@ -1,0 +1,138 @@
+.user-events-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 0px 36px -16px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 0px 36px -16px rgba(0, 0, 0, 1);
+  box-shadow: 0px 0px 24px -16px rgba(0, 0, 0, 1);
+}
+
+.user-events-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 72px;
+  padding: 0 16px;
+  border-bottom: 1px solid #e7eaf0;
+}
+
+.user-events-card-body {
+  width: 100%;
+  height: 574px;
+}
+
+.user-events-log {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-events-log-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 40px;
+  padding: 0 48px;
+
+  &.header {
+    border-bottom: 1px solid #e7eaf0;
+    background-color: #f8fafc;
+  }
+}
+
+.user-events-log-cell {
+  &.header {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    text-align: left;
+  }
+
+  &.user-id {
+    width: 23%;
+  }
+
+  &.real-name {
+    width: 23%;
+  }
+
+  &.event {
+    width: 23%;
+  }
+
+  &.timestamp {
+    width: 31%;
+  }
+}
+
+.user-events-log-body {
+  height: 533px;
+  overflow: auto;
+}
+
+.no-more-records-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 8px 0;
+  color: #bbbbbb;
+  font-style: italic;
+
+  &:hover {
+    cursor: default;
+    background-color: #ffffff;
+  }
+}
+
+.user-events-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 56px;
+  border-top: 1px solid #e7eaf0;
+}
+
+.filters-section-label {
+  margin: 0 16px 0 24px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.filter-tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 24px;
+  font-size: 14px;
+  border: 1px solid #e7eaf0;
+  border-radius: 6px;
+  background-color: #f8fafc;
+}
+
+.clear-filter-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 8px;
+  border-right: 1px solid #e7eaf0;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.filter-tag-value {
+  padding: 0 8px;
+}
+
+.no-filter-text {
+  font-size: 14px;
+  color: #747474;
+}

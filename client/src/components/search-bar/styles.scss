@@ -1,0 +1,12 @@
+.search-bar {
+  flex: 1;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 1px solid #e7eaf0;
+  border-radius: 6px;
+
+  &:focus {
+    outline: none !important;
+    border: 1px solid #4a60c6;
+  }
+}
