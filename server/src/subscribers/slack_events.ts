@@ -12,7 +12,7 @@ slackEvents.on('user_change', async (event: SlackEvent) => {
   const parsedEvent = userEventsService.parseSlackUserEvent(event);
   const user = await db.users.byId(parsedEvent.user_id);
   if (user) {
-    await db.userEvents.insertMany([parsedEvent]);
+    await db.userEvents.insert(parsedEvent);
   }
 });
 
@@ -24,8 +24,8 @@ slackEvents.on('team_join', async (event: SlackEvent) => {
     user_id: event.user.id,
     team_id: event.user.team_id,
   };
-  await db.users.insertMany([user]);
-  await db.userEvents.insertMany([parsedEvent]);
+  await db.users.insert(user);
+  await db.userEvents.insert(parsedEvent);
 });
 
 export default slackEvents;

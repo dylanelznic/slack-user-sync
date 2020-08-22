@@ -1,83 +1,65 @@
+import app from 'app';
 import { db } from 'db';
 import request from 'supertest';
 
-import app from '../../app';
-
-describe('/users', () => {
-  it('should return a list of users', async () => {
+describe('/v1/users', () => {
+  it('should return a list of Users', async () => {
     const mockQuery = jest.fn();
     db.users.all = mockQuery.mockReturnValue([
-      { id: 'test_id', name: 'test_name' },
+      { id: 'test_id_1', user_id: 'test_user_id_1', team_id: 'test_team_id_1' },
+      { id: 'test_id_2', user_id: 'test_user_id_2', team_id: 'test_team_id_2' },
     ]);
     return await request(app)
-      .get('/users')
+      .get('/v1/users')
       .expect('Content-Type', /json/)
-      .expect(200, [{ id: 'test_id', name: 'test_name' }]);
+      .expect(200, [
+        {
+          id: 'test_id_1',
+          user_id: 'test_user_id_1',
+          team_id: 'test_team_id_1',
+        },
+        {
+          id: 'test_id_2',
+          user_id: 'test_user_id_2',
+          team_id: 'test_team_id_2',
+        },
+      ]);
   });
 });
 
-describe('/users/:userId', () => {
-  it('should return a User', async () => {
+describe('/v1/user-events', () => {
+  it('should return a list of UserEvents', async () => {
     const mockQuery = jest.fn();
-    db.users.byId = mockQuery.mockReturnValue({
-      id: 'test_id',
-      name: 'test_name',
-    });
+    db.userEvents.all = mockQuery.mockReturnValue([
+      {
+        id: 'test_id_1',
+        type: 'user_change',
+        user_id: 'test_user_id_1',
+        team_id: 'test_team_id_1',
+      },
+      {
+        id: 'test_id_2',
+        type: 'user_change',
+        user_id: 'test_user_id_2',
+        team_id: 'test_team_id_2',
+      },
+    ]);
     return await request(app)
-      .get('/users/test_user')
+      .get('/v1/user-events')
       .expect('Content-Type', /json/)
-      .expect(200, { id: 'test_id', name: 'test_name' });
-  });
-
-  it("should return a 404 if user doesn't exist", async () => {
-    const mockQuery = jest.fn();
-    db.users.byId = mockQuery.mockReturnValue(null);
-    return await request(app)
-      .get('/users/test_user')
-      .expect('Content-Type', /json/)
-      .expect(404, {
-        status: 'error',
-        message: 'User not found',
-        statusCode: 404,
-      });
-  });
-});
-
-describe('/users/:userId/name', () => {
-  it("should return a User's name", async () => {
-    const mockQuery = jest.fn();
-    db.users.byId = mockQuery.mockReturnValue({
-      id: 'test_id',
-      name: 'test_name',
-    });
-    return await request(app)
-      .get('/users/test_user/name')
-      .expect('Content-Type', /json/)
-      .expect(200, { name: 'test_name' });
-  });
-
-  it("should return a User's name in reverse", async () => {
-    const mockQuery = jest.fn();
-    db.users.byId = mockQuery.mockReturnValue({
-      id: 'test_id',
-      name: 'test_name',
-    });
-    return await request(app)
-      .get('/users/test_user/name?reverse=1')
-      .expect('Content-Type', /json/)
-      .expect(200, { name: 'eman_tset' });
-  });
-
-  it("should return a 404 if user doesn't exist", async () => {
-    const mockQuery = jest.fn();
-    db.users.byId = mockQuery.mockReturnValue(null);
-    return await request(app)
-      .get('/users/test_user')
-      .expect('Content-Type', /json/)
-      .expect(404, {
-        status: 'error',
-        message: 'User not found',
-        statusCode: 404,
-      });
+      .expect(200, [
+        {
+          id: 'test_id_1',
+          type: 'user_change',
+          user_id: 'test_user_id_1',
+          team_id: 'test_team_id_1',
+        },
+        {
+          id: 'test_id_2',
+          type: 'user_change',
+          user_id: 'test_user_id_2',
+          team_id: 'test_team_id_2',
+        },
+      ]);
   });
 });

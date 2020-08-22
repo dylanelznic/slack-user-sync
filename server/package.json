@@ -69,6 +69,7 @@
     "db": "dist/db",
     "routes": "dist/routes",
     "services": "dist/services",
+    "subscribers": "dist/subscribers",
     "utils": "dist/utils"
   }
 }

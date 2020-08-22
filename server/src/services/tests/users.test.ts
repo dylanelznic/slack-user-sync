@@ -1,10 +1,17 @@
 import { UsersService } from '../users';
 
-describe('Users Service', () => {
-  it("should reverse a User's name", () => {
-    const user = { id: 'test_id', name: 'dylan elznic' };
+describe('UsersService', () => {
+  it('should parse a Slack user', () => {
     const usersService = new UsersService();
-    const nameReversed = usersService.getUserNameReversed(user);
-    expect(nameReversed).toEqual('cinzle nalyd');
+    const parsedUser = usersService.parseSlackUser({
+      user: {
+        id: 'test_user_id',
+        team_id: 'test_team_id',
+      },
+    });
+    expect(parsedUser).toEqual({
+      user_id: 'test_user_id',
+      team_id: 'test_team_id',
+    });
   });
 });

@@ -49,6 +49,16 @@ export class UserEventsRepository {
   };
 
   /**
+   * Insert a new UserEvent, returning the new UserEvent
+   *
+   * @param userEvent - The UserEvent to insert
+   */
+  insert = async (userEvent: UserEvent): Promise<UserEvent> => {
+    const query = this.pgp.helpers.insert(userEvent, this.cs);
+    return this.db.one(query);
+  };
+
+  /**
    * Insert a list of new UserEvents, returning the list of new UserEvents
    *
    * @param userEvents - The list of UserEvents to insert

@@ -38,6 +38,16 @@ export class UsersRepository {
   };
 
   /**
+   * Insert a new User, returning the new User
+   *
+   * @param user - The User to insert
+   */
+  insert = async (user: User): Promise<User> => {
+    const query = this.pgp.helpers.insert(user, this.cs);
+    return this.db.one(query);
+  };
+
+  /**
    * Insert a list of new Users, returning the list of new Users
    *
    * @param users - The list of Users to insert
