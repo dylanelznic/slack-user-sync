@@ -2,12 +2,15 @@ import { join as joinPath } from 'path';
 
 import { IQueryFileOptions, QueryFile } from 'pg-promise';
 
-/** SQL queries for the Users table */
+/** SQL queries for the user_events table */
+export const userEvents = {
+  all: sql('user_events/all.sql'),
+};
+
+/** SQL queries for the users table */
 export const users = {
   all: sql('users/all.sql'),
   byId: sql('users/by-id.sql'),
-  byName: sql('users/by-name.sql'),
-  delete: sql('users/delete.sql'),
 };
 
 /**
