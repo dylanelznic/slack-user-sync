@@ -1,3 +1,4 @@
+import { UserEventsService } from './user_events';
 import { UsersService } from './users';
 
-export { UsersService };
+export { UserEventsService, UsersService };

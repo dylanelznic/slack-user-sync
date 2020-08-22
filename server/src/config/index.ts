@@ -9,6 +9,10 @@ export const appConfig: AppVariables = {
   express: {
     port: process.env.PORT,
   },
+  slack: {
+    signingSecret: process.env.SLACK_SIGNING_SECRET,
+    oAuthAccessToken: process.env.SLACK_OAUTH_ACCESS_TOKEN,
+  },
 };
 
 /** DB config variables */

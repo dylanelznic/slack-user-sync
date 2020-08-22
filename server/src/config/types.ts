@@ -1,11 +1,18 @@
+/** Environment variables for the app */
+export interface AppVariables {
+  express: ExpressVariables;
+  slack: SlackVariables;
+}
+
 /** Environment variables for Express */
 export interface ExpressVariables {
   port: string;
 }
 
-/** Environment variables for the app */
-export interface AppVariables {
-  express: ExpressVariables;
+/** Evnironment variables for Slack */
+export interface SlackVariables {
+  signingSecret: string;
+  oAuthAccessToken: string;
 }
 
 /** Evnironment variables for the DB */
