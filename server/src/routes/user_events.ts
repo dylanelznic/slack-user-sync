@@ -4,17 +4,16 @@ import { NextFunction, Request, Response, Router } from 'express';
 const router = Router();
 
 /**
- * /users:
+ * /user-events:
  *   get:
- *     description: Return a list of all Users with UserEvent
- *       metadata from the DB
+ *     description: Return a list of all UserEvents from the DB
  *     produces:
  *       - application/json
  *     responses:
  *       200:
- *         description: Successfuly returned a list of all Users
+ *         description: Successfuly returned a list of all UserEvents
  *       400:
- *         description: Error fetching Users from the DB
+ *         description: Error fetching UserEvents from the DB
  */
 router.get(
   '/',
@@ -24,8 +23,8 @@ router.get(
     next: NextFunction,
   ): Promise<Response> => {
     try {
-      const users = await db.users.all();
-      return res.send(users);
+      const userEvents = db.userEvents.all();
+      return res.send(userEvents);
     } catch (e) {
       next(e);
     }

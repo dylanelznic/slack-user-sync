@@ -1,7 +1,8 @@
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import { UserRoutes } from 'routes';
+import routes from 'routes';
+import subscribers from 'subscribers';
 import { ResponseError, expressLogger, handleError } from 'utils';
 
 /** Initialize Express */
@@ -22,8 +23,11 @@ app.use(cors());
 /** Register helmet middleware */
 app.use(helmet());
 
+/** Register API request listeners */
+app.use('/v1', subscribers);
+
 /** Register API routes */
-app.use('/users', UserRoutes);
+app.use('/v1', routes);
 
 /** Register error handling middleware */
 app.use(
